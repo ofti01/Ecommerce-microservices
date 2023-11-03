@@ -10,9 +10,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches-ignore: [ "master" ]
+    branches-ignore: [ "main" ]
   pull_request:
-    branches-ignore: [ "master" ]
+    branches-ignore: [ "main" ]
 env:
   REGISTRY: docker.io
   REPO_OWNER: ${{ github.repository_owner }}
