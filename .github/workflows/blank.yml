@@ -9,10 +9,8 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches-ignore: [ "main" ]
   pull_request:
-    branches-ignore: [ "main" ]
+    branches: [ "main" ]
 env:
   REGISTRY: docker.io
   REPO_OWNER: ${{ github.repository_owner }}
@@ -33,14 +31,3 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-
-      - name: Dockerize & Push Docker Image ${{matrix.image_name}}
-        uses: mr-smithers-excellent/docker-build-push@v6
-        with:
-          image: ${{ secrets.DOCKER_USERNAME }}/${{matrix.image_name}}
-          tags: latest
-          directory: ${{matrix.image_name}}
-          registry: docker.io
-          dockerfile: ${{matrix.image_name}}/Dockerfile
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
