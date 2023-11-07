@@ -13,11 +13,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class OrderItem {
 
     @Id
-    private long id;
+    private String id;
 
     private Long quantity;
 
-    private long product_id;
+    private String product_id;
 
     private Order order;
+
+    public OrderItem(Long quantity, String product_id, Order order) {
+        this.quantity = quantity;
+        this.product_id = product_id;
+        this.order = order;
+    }
 }

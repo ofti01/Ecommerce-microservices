@@ -21,4 +21,10 @@ public class Payment {
     private PaymentStatus status;
 
     private Order order;
+
+    public Payment(String paypalPaymentId, PaymentStatus status, Order order) {
+        this.paypalPaymentId = paypalPaymentId;
+        this.status = status;
+        this.order = order;
+    }
 }
