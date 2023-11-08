@@ -11,6 +11,8 @@ name: Java CI with Maven
 on:
   pull_request:
     branches: [ "main" ]
+  push :
+    branches: [ "main" ]
 env:
   REGISTRY: docker.io
   REPO_OWNER: ${{ github.repository_owner }}
@@ -19,7 +21,7 @@ jobs:
     strategy:
       matrix:
         image_name: [ "product-service"]
-    name: Build and Push
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -30,4 +32,12 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'maven'
+          cache: 'maven' 
+          
+      - name: Build with Maven ${{matrix.image_name}}
+        working-directory: ${{matrix.image_name}}
+        run: mvn -B clean package --file pom.xml
+
+      - name: Test ${{matrix.image_name}}
+        working-directory: ${{matrix.image_name}}
+        run: mvn -B test --file pom.xml
