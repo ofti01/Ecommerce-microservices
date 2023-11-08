@@ -9,7 +9,12 @@ import lombok.Data;
 @Builder
 public class OrderItemDto {
     private String id;
-    private Long quantity;
+    private int quantity;
     private String productId;
     private OrderDto orderdto;
+
+    public OrderItemDto(int quantity, String productId) {
+        this.quantity = quantity;
+        this.productId = productId;
+    }
 }

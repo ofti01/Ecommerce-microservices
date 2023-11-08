@@ -15,13 +15,13 @@ public class OrderItem {
     @Id
     private String id;
 
-    private Long quantity;
+    private int quantity;
 
     private String product_id;
 
     private Order order;
 
-    public OrderItem(Long quantity, String product_id, Order order) {
+    public OrderItem(int quantity, String product_id, Order order) {
         this.quantity = quantity;
         this.product_id = product_id;
         this.order = order;

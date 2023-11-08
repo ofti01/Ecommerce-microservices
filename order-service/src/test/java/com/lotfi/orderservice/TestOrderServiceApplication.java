@@ -13,6 +13,7 @@ public class TestOrderServiceApplication {
     @Bean
     @ServiceConnection
     MongoDBContainer mongoDbContainer() {
+
         return new MongoDBContainer(DockerImageName.parse("mongo:latest"));
     }
 
