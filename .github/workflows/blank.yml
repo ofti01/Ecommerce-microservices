@@ -20,7 +20,7 @@ jobs:
   build-and-push:
     strategy:
       matrix:
-        image_name: [ "product-service"]
+        image_name: [ "product-service","order-service"]
     name: Build and Test
     runs-on: ubuntu-latest
     steps:
