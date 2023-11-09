@@ -26,6 +26,15 @@ public class ProductController {
         ProductDto productDto = productService.getById(id);
         return new ResponseEntity<>(productDto, HttpStatus.OK);
     }
+
+    @GetMapping("/check/{id}")
+    public ResponseEntity<Boolean> isExist(@PathVariable Long id) {
+        ProductDto productDto = productService.getById(id);
+        if (productDto == null)
+            return new ResponseEntity<>(false, HttpStatus.OK);
+        else
+            return new ResponseEntity<>(true, HttpStatus.OK);
+    }
     @PostMapping
     public ResponseEntity<ProductDto> create(@RequestBody @Valid ProductDto productDto) {
         ProductDto pr = productService.create(productDto);
